@@ -1,0 +1,142 @@
+body {
+  width: 50%;
+  font-family: sans-serif;
+  border: 1px solid lightblue;
+  padding: 0px;
+  margin: 0 auto;
+  border-radius: 14px;
+}
+
+.location-date-time-header {
+  width: 80%;
+  text-align: center;
+  color: lightblue;
+  font-weight: 600;
+  font-size: 25px;
+  margin: 0 auto;
+  display: block;
+  padding: 0px;
+}
+
+#searchSubmitButton {
+  border: 1px solid lightblue;
+  border-radius: 4px;
+  height: 29;
+}
+
+#location {
+  margin: 0 auto;
+}
+
+#currentDate,
+#currentTime {
+  font-size: 20px;
+  padding: 0px;
+}
+
+.search {
+  width: 100%;
+  padding: 5px 10px 5px 10px;
+  margin: 0 auto;
+}
+
+#search-input {
+  border-radius: 4px;
+  border: 1px solid lightblue;
+  height: 30px;
+  margin: 0 auto;
+  padding: 10px;
+}
+
+nav {
+  margin: 0 auto;
+  display: inline-block;
+  float: left;
+}
+
+.smallText {
+  font-size: 10px;
+  padding: 0px 0px 5px 0px;
+  text-style: italic;
+}
+figure {
+  padding: 0px;
+  font-size: 19px;
+}
+figure button {
+  font-size: 15px;
+}
+figcaption {
+  padding: 0px;
+  margin: 0 auto;
+}
+
+.todays-weather {
+  color: black;
+  display: block;
+  width: 60%;
+  padding: 0px;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.todays-weather p {
+  display: block;
+  padding: 0px;
+}
+.todays-weather img {
+  margin: 0 auto;
+  width: 200px;
+  padding: 0px 0px;
+}
+
+.week-weather {
+  margin: 0 auto;
+  width: 80%;
+}
+
+.card-img-top {
+  width: 65%;
+  margin: 0 auto;
+  padding: 0px;
+}
+
+.upcoming-day {
+  width: 15%;
+  margin: 0 auto;
+  padding: 5px;
+}
+
+.card-text {
+  text-align: center;
+  font-size: 15px;
+}
+
+.card {
+  border: 1px solid lightblue;
+  height: 100%;
+}
+
+.mainCard {
+  border: 0px;
+  margin: 0 auto;
+}
+.mainCard img {
+  width: 150px;
+}
+
+#convertButton {
+  border: 1px solid lightblue;
+  box-shadow: 2px 1px 1px lightcyan;
+  color: black;
+  border-radius: 4px;
+  padding: 0px 5px 0px 5px;
+  background-color: white;
+  font-size: 15 px;
+}
+
+#convertButton:hover {
+  border: 1px solid lightcyan;
+  box-shadow: 2px 1px 1px lightcyan;
+  background-color: lightgray;
+}

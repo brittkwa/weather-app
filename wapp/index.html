@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather App</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We"
+      crossorigin="anonymous"
+    />
+    <link href="src/style.css" rel="stylesheet" />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+  </head>
+  <body>
+    <br />
+
+        <div class="search">
+          <form>
+            <input 
+            type="text" 
+            id="city-input" 
+            placeholder="Enter a city/zipcode"
+            autocomplete="off">
+
+            <input type="submit" value="Search" id="searchSubmitButton">
+            
+          </form>
+          <button id="cLocationBtn"> Current Location </button>
+        </div>
+
+      <div class="location-date-time-header">
+        <h1 class="location-text">
+          <br />
+          <span id="location-text">Washington DC</span>
+          <br />
+          <span id="currentDate"></span>
+          <span id="currentTime"></span>
+          <br />
+        </h1>
+      </div>
+    </div>
+
+    <div class="todays-weather">
+      <div class="row">
+        <div class="col-md">
+          <div class="card mainCard">
+            <img src="img/Sun_Outline.png" class="card-img-top" alt="..." />
+            <div class="card-body">
+              <p class="card-text">     
+                <figure>High:
+                    <span id="currentHigh">  90 </span>
+                    <br />Low:
+                    <span id="currentLow"> 70 </span> 
+                    <br />Now:
+                    <span id="currentTemp"></span>
+                      <button id="convertButton"><span id="conTemp">90.00</span>° <span id="conScale">Fahrenheit</span></button>
+                    </span>
+                    <figcaption class="smallText">Current Temperature; Click to Convert</figcaption>
+                </figure>
+                
+                <br />
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row week-weather">
+      <div class="col-md upcoming-day">
+        <div class="card">
+          <img src="img/Sun_Outline.png" class="card-img-top" alt="..." />
+          <div class="card-body">
+            <p class="card-text" id="date1">
+              <span class="date"></span><br>
+              High: <span class="tempHigh"><span> Low: <span class="tempLow"><span>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md upcoming-day">
+        <div class="card">
+          <img src="img/Sun_Outline.png" class="card-img-top" alt="..." />
+          <div class="card-body">
+              <p class="card-text" id="date2">
+                  <span class="date"></span><br />
+                  High: <span class="tempHigh"><span> Low: <span class="tempLow"><span>
+              </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md upcoming-day">
+        <div class="card">
+          <img src="img/Sun_Outline.png" class="card-img-top" alt="..." />
+          <div class="card-body">
+              <p class="card-text" id="date3">
+                  <span class="date"></span><br>
+                  High: <span class="tempHigh"><span> Low: <span class="tempLow"><span>
+                </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md upcoming-day">
+        <div class="card">
+          <img src="img/Sun_Outline.png" class="card-img-top" alt="..." />
+          <div class="card-body">
+              <p class="card-text" id="date4" >
+                  <span class="date"></span><br />
+                  High: <span class="tempHigh"><span> Low: <span class="tempLow"><span>
+                </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md upcoming-day">
+        <div class="card">
+          <img src="img/Sun_Outline.png" class="card-img-top" alt="..." />
+          <div class="card-body">
+              <p class="card-text" id="date5" >
+                  <span class="date"></span><br />
+                    High: <span class="tempHigh"><span> Low: <span class="tempLow"><span>
+                </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md upcoming-day">
+        <div class="card">
+          <img src="img/Sun_Outline.png" class="card-img-top" alt="..." />
+          <div class="card-body">
+            <p class="card-text" id="date6" >
+                <span class="date"></span><br />
+                High: <span class="tempHigh"><span> Low: <span class="tempLow"><span>
+              </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="src/app.js"></script>
+  </body>
+</html>
