@@ -1,9 +1,9 @@
 body {
   width: 50%;
   font-family: sans-serif;
+  margin: 0 auto;
   border: 1px solid lightblue;
   padding: 0px;
-  margin: 0 auto;
   border-radius: 14px;
 }
 
@@ -57,7 +57,6 @@ nav {
 .smallText {
   font-size: 10px;
   padding: 0px 0px 5px 0px;
-  text-style: italic;
 }
 figure {
   padding: 0px;
@@ -86,7 +85,7 @@ figcaption {
 }
 .todays-weather img {
   margin: 0 auto;
-  width: 200px;
+  width: 300px;
   padding: 0px 0px;
 }
 
