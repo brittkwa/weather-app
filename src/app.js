@@ -21,11 +21,11 @@ let weekday = [
   "Friday",
   "Saturday",
 ];
-
+let city = "Washington";
 let apiKey = "d08a8db058f41bd0c4453c6e70dcebee";
 
 getDates();
-getFutureTemps();
+getForecast();
 
 let currentLocationButton = document.querySelector("#cLocationBtn");
 currentLocationButton.addEventListener("click", toCurrent);
@@ -43,19 +43,16 @@ function toCurrent() {
 function logResponse(response) {
   console.log(response);
   cityChangeTxt(response);
-  changeWeatherInfo(response);
+  changeCurrentWeather(response);
+
 }
 
 function handlePosition(position) {
   let lat = position.coords.latitude;
   let long = position.coords.longitude;
-  currentLocationWeather(lat, long);
+  let apiURL = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&units=imperial&appid=${apiKey}`;
 }
 
-function currentLocationWeather(lat, long) {
-  let apiURL = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&units=imperial&appid=${apiKey}`;
-  axios.get(apiURL).then(logResponse);
-}
 
 function getDates() {
   let currentDate = new Date();
@@ -74,24 +71,34 @@ function getDates() {
 
   document.getElementById("currentTime").innerHTML = timeStr;
   document.getElementById("currentDate").innerHTML = dateString;
-}
 
-function getFutureTemps() {
-  let tempHigh = "90";
-  let tempLow = "70";
   for (let i = 1; i <= 6; i++) {
-    const date = new Date();
+    let date = new Date();
     let dayNum = date.getDate() + i;
     date.setDate(dayNum);
-
     let weekdayStr = weekday[date.getDay()];
     let upcomingDateString = weekdayStr + ", " + dayNum;
-
     let upcomingDateId = document.querySelector("p#date" + i + " .date");
+    upcomingDateId.innerHTML = upcomingDateString;
+
+  }
+}
+
+function getLat(city){
+  let cityApiURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`
+  let response = axios.get(cityApiURL)
+  let lat = response.lat;
+}
+
+function getForecast(lon, lat) {
+  let tempHigh = "";
+  let tempLow = "";
+  axios.get(apiURL).then(getCoords);
+  let apiURL = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${apiKey}`
+  let response = axios.get(apiURL);
+  for (let i = 1; i<=6; i++){
     let tempHighId = document.querySelector("p#date" + i + " .tempHigh");
     let tempLowId = document.querySelector("p#date" + i + " .tempLow");
-
-    upcomingDateId.innerHTML = upcomingDateString;
     tempHighId.innerHTML = tempHigh;
     tempLowId.innerHTML = tempLow;
   }
@@ -138,12 +145,21 @@ function cityChangeTxt(response) {
   let cityTxt = document.querySelector("#location-text");
   cityTxt.innerHTML = response.data.name;
 }
-function changeWeatherInfo(response) {
+
+function changeIcon(response, i){
+
+  let icon = document.querySelector("icon" + i)
+
+}
+function changeCurrentWeather(response) {
   let currentTemp = document.querySelector("#conTemp");
   let currentLow = document.querySelector("#currentLow");
   let currentHigh = document.querySelector("#currentHigh");
-
-  currentTemp.innerHTML = response.data.main.temp;
-  currentLow.innerHTML = response.data.main.temp_min;
-  currentHigh.innerHTML = response.data.main.temp_max;
+  if (response.data != null){
+    currentTemp.innerHTML = response.data.main.temp;
+    currentLow.innerHTML = response.data.main.temp_min;
+    currentHigh.innerHTML = response.data.main.temp_max;
+  } else {
+    
+  }
 }
