@@ -7,6 +7,10 @@ body {
   border-radius: 14px;
 }
 
+#weather-app{
+  border: 1px solid lightblue;
+
+}
 .location-date-time-header {
   width: 80%;
   text-align: center;
@@ -18,10 +22,18 @@ body {
   padding: 0px;
 }
 
-#searchSubmitButton {
-  border: 1px solid lightblue;
+#searchSubmitButton, #cLocationBtn, #convertUnitsBtn  {
+  border: 1px solid gray;
   border-radius: 4px;
   height: 29;
+  background-color: white;
+  color: gray;
+
+}
+
+#searchSubmitButton:hover, #cLocationBtn:hover, #convertUnitsBtn:hover{
+color: white;
+background-color: gray;
 }
 
 #location {

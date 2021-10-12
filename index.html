@@ -13,11 +13,10 @@
     />
     <link href="src/style.css" rel="stylesheet" />
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-
   </head>
   <body>
     <br />
-
+    
         <div class="search">
           <form>
             <input 
@@ -56,9 +55,10 @@
                     <br />Low:
                     <span id="currentLow"> 70 </span> 
                     <br />Now:
-                    <span id="currentTemp"></span>
-                      <button id="convertButton"><span id="conTemp">90.00</span>° <span id="conScale">Fahrenheit</span></button>
+                    
+                     <span id="currentTemp">90.00</span>° <span class="units">Fahrenheit</span></button>
                     </span>
+                    <button id="convertUnitsBtn">Convert to <span class="units">Celsius</span></span> </button>
                     <figcaption class="smallText">Current Temperature; Click to Convert</figcaption>
                 </figure>
                 
