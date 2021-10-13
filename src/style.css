@@ -9,7 +9,6 @@ body {
 
 #weather-app{
   border: 1px solid lightblue;
-
 }
 .location-date-time-header {
   width: 80%;
@@ -62,8 +61,7 @@ background-color: gray;
 
 nav {
   margin: 0 auto;
-  display: inline-block;
-  float: left;
+  
 }
 
 .smallText {
