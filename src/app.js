@@ -23,21 +23,30 @@ let weekday = [
 ];
 getDates();
 let apiKey = "d08a8db058f41bd0c4453c6e70dcebee";
-let city = "";
+let city = "Washington DC";
 let lat = "";
 let lon = "";
 let tempHigh = "";
 let tempLow = "";
 let tempNow = "";
 let icon = "";
+let units = "";
+let weatherDescription = "";
 let apiURLCity = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`;
 let apiURLOneCall= `http://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${apiKey}`;
 let apiURLCoords =`http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}`;
 let apiIconURL = `http://openweathermap.org/img/wn/${icon}@2x.png`;
-let form = document.querySelector("form");
-form.addEventListener("submit", searchToCoords);
+let searchForm = document.querySelector("form");
+searchForm.addEventListener("submit", searchToCoords);
+getCoords();
+let convertUnitsBtn = document.getElementById("convertUnitsBtn");
+convertUnitsBtn.addEventListener("click", convertUnits);
 
-
+//initiates the weather info grab from startup with default location
+function getCoords(){
+  apiURLCity = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`;
+  axios.get(apiURLCity).then(logLocation);
+}
 
 
 
@@ -126,6 +135,8 @@ function processCurrentWeather(response){
   tempNow = response.main.temp;
   icon = response.weather[0].icon;
   console.log(icon);
+  weatherDescription = response.weather[0].description;
+  console.log(weatherDescription);
   apiIconURL = `http://openweathermap.org/img/wn/${icon}@2x.png`;
   
   changeCurrentWeather();
@@ -136,9 +147,71 @@ function changeCurrentWeather(){
   let cTempHigh = document.getElementById("currentHigh");
   let cTempLow = document.getElementById("currentLow");
   let cTempNow = document.getElementById("currentTemp");
+  let wDescription = document.getElementById("weather-description")
   cTempLow.innerHTML = tempLow;
   cTempHigh.innerHTML = tempHigh;
   cTempNow.innerHTML = tempNow;
   document.getElementById("icon1").src = apiIconURL;
+  wDescription.innerHTML = weatherDescription;
 }
 
+function convertUnits(){
+  convertCurrentWeather();
+}
+
+function conversionCalc(temp) {
+let units2 = document.getElementById("units2");
+let units1 = document.getElementById("units");
+let newTemp = null;
+temp = temp.textContent;
+  if (units1.textContent === "Celsius") {
+    //convert from C to F
+    console.log("converting from C to F");
+    newTemp = (temp * 1.8) + 32;
+  } else if (units1.textContent === "Fahrenheit"){
+    //convert from F to C
+    console.log("converting from F to C");
+    newTemp = (temp - 32) / 1.8;
+   
+  }
+  console.log(newTemp);
+  return newTemp;
+}
+
+
+
+function convertCurrentWeather(){
+  let cTempHigh = document.getElementById("currentHigh");
+  let cTempLow = document.getElementById("currentLow");
+  let cTempNow = document.getElementById("currentTemp");
+  let tempNow = conversionCalc(cTempNow);
+  cTempNow.innerHTML = tempNow.toFixed(2);
+
+  let tempHigh = conversionCalc(cTempHigh);
+  cTempHigh.innerHTML = tempHigh.toFixed(2);
+
+  let tempLow = conversionCalc(cTempLow);
+  cTempLow.innerHTML = tempLow.toFixed(2);
+  currentUnits();
+
+}
+
+function currentUnits(){
+  let units2 = document.getElementById("units2");
+  let units1 = document.getElementById("units");
+  let currentUnits = units1.textContent;
+  let newUnits = "";
+  let oldUnits = "";
+  console.log(units1.textContent);
+  if (units1.textContent === "Fahrenheit"){
+    let oldUnits = "Fahrenheit";
+    let newUnits = "Celsius";
+  }
+  else if (units1.textContent === "Celsius"){
+    let oldUnits = "Celsius";
+    let newUnits = "Fahrenheit";
+  }
+
+  units2.textContent.innerHTML = oldUnits;
+  units1.textContent.innerHTML = newUnits;
+}

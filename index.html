@@ -46,7 +46,11 @@
       <div class="row">
         <div class="col-md">
           <div class="card mainCard">
-            <img src="img/Sun_Outline.png" class="card-img-top" id="icon1" alt="..." />
+            <figure>
+              <img src="img/Sun_Outline.png" class="card-img-top" id="icon1" alt="..." />
+              <figcaption id="weather-description" class="description"> </figcaption>
+
+            </figure>
             <div class="card-body">
               <p class="card-text">     
                 <figure>High:
@@ -55,9 +59,9 @@
                     <span id="currentLow"> 70 </span> 
                     <br />Now:
                     
-                     <span id="currentTemp">90.00</span>° <span class="units">Fahrenheit</span></button>
+                     <span id="currentTemp">90.00</span>° <span id="units">Fahrenheit</span></button>
                     </span>
-                    <br><button id="convertUnitsBtn">Convert to <span class="units">Celsius</span></span> </button>
+                    <br><button id="convertUnitsBtn">Convert to <span id="units2">Celsius</span></span> </button>
                     <figcaption class="smallText">Current Temperature; Click to Convert</figcaption>
                 </figure>
                 
@@ -142,7 +146,10 @@
         </div>
       </div>
     </div>
-    <a href="https://github.com/brittkwa/weather-app"> My GitHub Repository </a> 
     <script src="src/app.js"></script>
-  </body>
+    <footer>    
+      <a href="https://github.com/brittkwa/weather-app"> My GitHub Repository </a> 
+    </footer>
+</body>
+
 </html>
