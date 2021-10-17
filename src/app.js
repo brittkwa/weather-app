@@ -155,63 +155,64 @@ function changeCurrentWeather(){
   wDescription.innerHTML = weatherDescription;
 }
 
+//converts the temperature's units of measurements
 function convertUnits(){
   convertCurrentWeather();
+
+
+  let units2 = document.getElementById("units2");
+  let units1 = document.getElementById("units");
+  let currentUnits = units1.textContent.innerHTML;
+  let newUnits = null;
+  let oldUnits = null;
+  console.log(units1.textContent);
+  if (currentUnits === "Fahrenheit"){
+    let oldUnits = "Fahrenheit";
+    let newUnits = "Celsius";
+  }
+  else {
+    let oldUnits = "Celsius";
+    let newUnits = "Fahrenheit";
+  }
+
+  let tempUnits2 = units1.innerHTML;  
+  units1.innerHTML = units2.innerHTML;
+  units2.innerHTML = tempUnits2;
+
 }
 
+
+//calculates conversions
 function conversionCalc(temp) {
-let units2 = document.getElementById("units2");
-let units1 = document.getElementById("units");
-let newTemp = null;
-temp = temp.textContent;
-  if (units1.textContent === "Celsius") {
+  let units1 = document.getElementById("units");
+  let newTemp = null;
+
+  if (units1.innerHTML === "Celsius") {
     //convert from C to F
     console.log("converting from C to F");
-    newTemp = (temp * 1.8) + 32;
-  } else if (units1.textContent === "Fahrenheit"){
+    newTemp = temp * 1.8 + 32;
+  } else if (units1.innerHTML === "Fahrenheit") {
     //convert from F to C
     console.log("converting from F to C");
     newTemp = (temp - 32) / 1.8;
-   
   }
   console.log(newTemp);
   return newTemp;
 }
 
-
-
-function convertCurrentWeather(){
+//converts current weather's units
+function convertCurrentWeather() {
   let cTempHigh = document.getElementById("currentHigh");
   let cTempLow = document.getElementById("currentLow");
   let cTempNow = document.getElementById("currentTemp");
-  let tempNow = conversionCalc(cTempNow);
+
+  let tempNow = conversionCalc(cTempNow.innerHTML);
   cTempNow.innerHTML = tempNow.toFixed(2);
 
-  let tempHigh = conversionCalc(cTempHigh);
+  let tempHigh = conversionCalc(cTempHigh.innerHTML);
   cTempHigh.innerHTML = tempHigh.toFixed(2);
 
-  let tempLow = conversionCalc(cTempLow);
+  let tempLow = conversionCalc(cTempLow.innerHTML);
   cTempLow.innerHTML = tempLow.toFixed(2);
-  currentUnits();
-
 }
 
-function currentUnits(){
-  let units2 = document.getElementById("units2");
-  let units1 = document.getElementById("units");
-  let currentUnits = units1.textContent;
-  let newUnits = "";
-  let oldUnits = "";
-  console.log(units1.textContent);
-  if (units1.textContent === "Fahrenheit"){
-    let oldUnits = "Fahrenheit";
-    let newUnits = "Celsius";
-  }
-  else if (units1.textContent === "Celsius"){
-    let oldUnits = "Celsius";
-    let newUnits = "Fahrenheit";
-  }
-
-  units2.textContent.innerHTML = oldUnits;
-  units1.textContent.innerHTML = newUnits;
-}
