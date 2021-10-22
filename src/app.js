@@ -44,7 +44,7 @@ convertUnitsBtn.addEventListener("click", convertUnits);
 
 //initiates the weather info grab from startup with default location
 function getCoords(){
-  apiURLCity = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`;
+  apiURLCity = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`;
   axios.get(apiURLCity).then(logLocation);
 }
 
@@ -61,7 +61,7 @@ function getCoords(){
 function searchToCoords(event){
   event.preventDefault();
   let inputCity = document.querySelector("#city-input").value;
-  apiURLCity = `http://api.openweathermap.org/data/2.5/weather?q=${inputCity}&appid=${apiKey}`;
+  apiURLCity = `https://api.openweathermap.org/data/2.5/weather?q=${inputCity}&appid=${apiKey}`;
   axios.get(apiURLCity).then(logLocation);
 }
 
@@ -113,13 +113,13 @@ function getDates() {
 function coordsLocationVar(position){
   lat = position.coords.latitude;
   lon = position.coords.longitude;
-  apiURLCoords =`http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=imperial&appid=${apiKey}`;
+  apiURLCoords =`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=imperial&appid=${apiKey}`;
   getWeather();
 }
 
 //retrieves the current weather for the selected coords through an API call
 function getWeather(){
-  apiURLCoords =`http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=imperial`;
+  apiURLCoords =`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=imperial`;
   axios.get(apiURLCoords).then(logWeatherResponse);
 }
 
@@ -137,7 +137,7 @@ function processCurrentWeather(response){
   console.log(icon);
   weatherDescription = response.weather[0].description;
   console.log(weatherDescription);
-  apiIconURL = `http://openweathermap.org/img/wn/${icon}@2x.png`;
+  apiIconURL = `https://openweathermap.org/img/wn/${icon}@2x.png`;
   
   changeCurrentWeather();
 }
@@ -153,6 +153,7 @@ function changeCurrentWeather(){
   cTempNow.innerHTML = tempNow;
   document.getElementById("icon1").src = apiIconURL;
   wDescription.innerHTML = weatherDescription;
+  console.log(apiIconURL);
 }
 
 //converts the temperature's units of measurements
