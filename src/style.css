@@ -1,5 +1,5 @@
 body {
-  width: 50%;
+  width: 80%;
   font-family: sans-serif;
   margin: 0 auto;
   border: 1px solid lightblue;
@@ -100,24 +100,24 @@ figcaption {
   text-align: center;
   margin: 0 auto;
 }
-
 .todays-weather p {
   display: block;
   padding: 0px;
 }
 .todays-weather img {
   margin: 0 auto;
-  width: 300px;
+  width: 30%;
   padding: 0px 0px;
 }
 
 .week-weather {
   margin: 0 auto;
-  width: 80%;
+  width: 100%;
+  font-size: 10px;
 }
 
 .card-img-top {
-  width: 65%;
+  width:100%;
   margin: 0 auto;
   padding: 0px;
 }
@@ -130,12 +130,15 @@ figcaption {
 
 .card-text {
   text-align: center;
-  font-size: 15px;
+  font-size: 17px;
+  padding: 0px;
+
 }
 
 .card {
   border: 1px solid lightblue;
   height: 100%;
+  
 }
 
 .mainCard {
@@ -143,7 +146,7 @@ figcaption {
   margin: 0 auto;
 }
 .mainCard img {
-  width: 150px;
+  width: 40%;
 }
 
 #convertButton {

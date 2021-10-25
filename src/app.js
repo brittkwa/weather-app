@@ -21,14 +21,12 @@ let weekday = [
   "Friday",
   "Saturday",
 ];
+
 getDates();
 let apiKey = "d08a8db058f41bd0c4453c6e70dcebee";
 let city = "Washington DC";
 let lat = "";
 let lon = "";
-let tempHigh = "";
-let tempLow = "";
-let tempNow = "";
 let icon = "";
 let units = "";
 let weatherDescription = "";
@@ -100,10 +98,8 @@ function getDates() {
     let weekdayStr = weekday[date.getDay()];
     let upcomingDateString = weekdayStr + ", " + dayNum;
 
-    let upcomingDateId = document.querySelector("p#date" + i + " .date");
-    let tempHighId = document.querySelector("p#date" + i + " .tempHigh");
-    let tempLowId = document.querySelector("p#date" + i + " .tempLow");
-
+    let upcomingDateId = document.querySelector(`#date${i} .date`);
+    
     upcomingDateId.innerHTML = upcomingDateString;
 
   }
@@ -120,9 +116,16 @@ function coordsLocationVar(position){
 //retrieves the current weather for the selected coords through an API call
 function getWeather(){
   apiURLCoords =`http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=imperial`;
+  let forecastAPI = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${apiKey}&units=imperial`
   axios.get(apiURLCoords).then(logWeatherResponse);
+  axios.get(forecastAPI).then(logForecastResponse);
 }
 
+//logs the API response and launches processForecast function
+function logForecastResponse(response){
+  console.log(response);
+  processForecast(response.data);
+}
 //logs the API response and launches processCurrentWeather function
 function logWeatherResponse(response){
   console.log(response.data);
@@ -158,6 +161,7 @@ function changeCurrentWeather(){
 //converts the temperature's units of measurements
 function convertUnits(){
   convertCurrentWeather();
+  convertForecast();
 
 
   let units2 = document.getElementById("units2");
@@ -216,3 +220,26 @@ function convertCurrentWeather() {
   cTempLow.innerHTML = tempLow.toFixed(2);
 }
 
+function processForecast(response){
+  for (let i = 1; i < 7; i++){
+    let fHigh = document.querySelector(`#date${i} .tempHigh`);
+    let fLow = document.querySelector(`#date${i} .tempLow`);
+    let high = response.daily[i].temp.max;
+    let low = response.daily[i].temp.min;
+    fHigh.innerHTML = high;
+    fLow.innerHTML = low;
+
+
+  }
+
+}
+/*
+function convertForecast(){
+  for (let i = 1; i<=forecastArr.length; i++){
+    let high = document.querySelector(`#date${i} .tempHigh`);
+    let low = document.querySelector(`#date${i} .tempLow`);
+   
+
+  }
+}
+*/
