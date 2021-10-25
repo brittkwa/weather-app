@@ -115,12 +115,8 @@ function coordsLocationVar(position){
 
 //retrieves the current weather for the selected coords through an API call
 function getWeather(){
-<<<<<<< HEAD
-  apiURLCoords =`http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=imperial`;
-  let forecastAPI = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${apiKey}&units=imperial`
-=======
   apiURLCoords =`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=imperial`;
->>>>>>> d03d6d8c571c0ed77dabbc9d3b60de3e398477db
+  let forecastAPI = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${apiKey}&units=imperial`
   axios.get(apiURLCoords).then(logWeatherResponse);
   axios.get(forecastAPI).then(logForecastResponse);
 }
