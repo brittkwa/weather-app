@@ -65,7 +65,6 @@ function searchToCoords(event){
 
 //logs the api response to console and sets longitude and latitude variables, runs getWeather
 function logLocation(response){
-  console.log(response);
   lat = response.data.coord.lat;
   lon = response.data.coord.lon;
   getWeather();
@@ -201,7 +200,6 @@ function conversionCalc(temp) {
     console.log("converting from F to C");
     newTemp = (temp - 32) / 1.8;
   }
-  console.log(newTemp);
   return newTemp;
 }
 
@@ -223,12 +221,23 @@ function convertCurrentWeather() {
 
 function processForecast(response){
   for (let i = 1; i < 7; i++){
+    let r = response.daily[i];
     let fHigh = document.querySelector(`#date${i} .tempHigh`);
     let fLow = document.querySelector(`#date${i} .tempLow`);
-    let high = response.daily[i].temp.max;
-    let low = response.daily[i].temp.min;
+    let high = r.temp.max;
+    let low = r.temp.min;
     fHigh.innerHTML = high;
     fLow.innerHTML = low;
+
+    let icon = r.weather.icon;
+
+    let iconImg = document.querySelector(`#icon${i+1}`);
+
+    console.log(icon);
+    apiIconURL = `https://openweathermap.org/img/wn/${icon}@2x.png`;
+    document.getElementById(`icon${i+1}`).src = apiIconURL;
+    console.log();
+
 
 
   }
