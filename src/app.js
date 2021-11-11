@@ -228,18 +228,12 @@ function processForecast(response){
     let low = r.temp.min;
     fHigh.innerHTML = high;
     fLow.innerHTML = low;
+    let iconID = `icon${i+1}`
 
-    let icon = r.weather.icon;
-
+    let icon = r.weather[0].icon;
     let iconImg = document.querySelector(`#icon${i+1}`);
-
-    console.log(icon);
     apiIconURL = `https://openweathermap.org/img/wn/${icon}@2x.png`;
-    document.getElementById(`icon${i+1}`).src = apiIconURL;
-    console.log();
-
-
-
+    document.getElementById(iconID).src = apiIconURL;
   }
 
 }
